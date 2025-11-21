@@ -1,0 +1,88 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user is admin
+    function isAdmin() {
+      return request.auth != null && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function to check if user owns the document
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+    
+    // قواعد مجموعة المستخدمين
+    match /users/{userId} {
+      // السماح للمستخدم بقراءة بياناته الخاصة
+      allow read: if isOwner(userId);
+      
+      // السماح للمستخدم بإنشاء ملفه الشخصي عند التسجيل
+      allow create: if isOwner(userId) && 
+                       request.resource.data.role == 'user' &&
+                       request.resource.data.email is string &&
+                       request.resource.data.displayName is string;
+      
+      // السماح للمستخدم بتحديث بياناته الخاصة (ما عدا الدور)
+      allow update: if isOwner(userId) && 
+                       request.resource.data.role == resource.data.role;
+      
+      // السماح للمسؤولين بقراءة جميع المستخدمين
+      allow read: if isAdmin();
+      
+      // السماح للمسؤولين بتعديل أدوار المستخدمين
+      allow update: if isAdmin();
+    }
+    
+    // قواعد ملخصات المباريات
+    match /match_summaries/{matchId} {
+      // قراءة فقط للمستخدمين المسجلين
+      allow read: if isAuthenticated();
+      
+      // الكتابة للمسؤولين فقط
+      allow write: if isAdmin();
+    }
+    
+    // قواعد الهدافين
+    match /scorers/{scorerId} {
+      // قراءة فقط للمستخدمين المسجلين
+      allow read: if isAuthenticated();
+      
+      // الكتابة للمسؤولين فقط
+      allow write: if isAdmin();
+    }
+    
+    // قواعد المجموعات
+    match /groups/{groupId} {
+      // قراءة فقط للمستخدمين المسجلين
+      allow read: if isAuthenticated();
+      
+      // الكتابة للمسؤولين فقط
+      allow write: if isAdmin();
+    }
+    
+    // قواعد الفرق
+    match /teams/{teamId} {
+      // قراءة فقط للمستخدمين المسجلين
+      allow read: if isAuthenticated();
+      
+      // الكتابة للمسؤولين فقط
+      allow write: if isAdmin();
+    }
+    
+    // قواعد المباريات التفصيلية (إن وجدت)
+    match /matches/{matchId} {
+      // قراءة فقط للمستخدمين المسجلين
+      allow read: if isAuthenticated();
+      
+      // الكتابة للمسؤولين فقط
+      allow write: if isAdmin();
+    }
+  }
+}

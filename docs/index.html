@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="تطبيق بطولة كأس بعدان 18 - تابع المباريات والنتائج والأهداف مباشرة">
+    <title>بعدان سبورت - Baghdan Sports</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        
+        .description {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+            text-align: right;
+        }
+        
+        .feature {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-right: 4px solid #667eea;
+        }
+        
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .feature p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #764ba2;
+            color: white;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚽ بعدان سبورت</h1>
+        <p class="subtitle">Baghdan Sports - تطبيق بطولة كأس بعدان 18</p>
+        
+        <p class="description">
+            تطبيق بعدان سبورت هو التطبيق الرسمي لبطولة كأس بعدان 18، يوفر لك كل ما تحتاجه لمتابعة البطولة من نتائج مباشرة، أهداف، إحصائيات، وقنوات بث مباشر.
+        </p>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>📊 نتائج مباشرة</h3>
+                <p>تابع النتائج لحظة بلحظة مع تحديثات فورية</p>
+            </div>
+            
+            <div class="feature">
+                <h3>📅 جدول المباريات</h3>
+                <p>جدول شامل لجميع المباريات والمجموعات</p>
+            </div>
+            
+            <div class="feature">
+                <h3>🎯 أهداف وملخصات</h3>
+                <p>شاهد أفضل اللحظات ومقاطع الأهداف</p>
+            </div>
+            
+            <div class="feature">
+                <h3>📺 بث مباشر</h3>
+                <p>شاهد المباريات مباشرة من التطبيق</p>
+            </div>
+            
+            <div class="feature">
+                <h3>📈 إحصائيات شاملة</h3>
+                <p>تابع أداء الفرق واللاعبين</p>
+            </div>
+            
+            <div class="feature">
+                <h3>📰 أخبار البطولة</h3>
+                <p>آخر أخبار وتحديثات البطولة</p>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <a href="https://play.google.com/store" class="btn btn-primary">
+                📱 حمّل من Google Play
+            </a>
+            <a href="https://github.com/3dshab/baghdan-sports-privacy1/blob/main/PRIVACY_POLICY.md" class="btn btn-secondary">
+                🔒 سياسة الخصوصية
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 Baghdan Sports. جميع الحقوق محفوظة.</p>
+            <p>
+                <a href="https://github.com/3dshab/baghdan-sports-privacy1">GitHub</a> | 
+                <a href="mailto:mohammedshahbain16@gmail.com">الدعم الفني</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
